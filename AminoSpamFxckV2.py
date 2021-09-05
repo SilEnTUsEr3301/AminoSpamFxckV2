@@ -11,17 +11,17 @@ client = AminoLab.Client()
 email = input("Email >> ")
 password = input("Password >> ")
 client.auth(email=email, password=password)
-msg = input("Message >> ")
-msgtype = input("Message Type >> ")
+message = input("Message >> ")
+message_type = input("Message Type >> ")
 clients = client.my_communities()
 for x, name in enumerate(clients.name, 1):
 	print(f"{x}.{name}")
-ndcId = clients.ndcId[int(input("Select the community >> "))-1]
-chats = client.my_chat_threads(ndcId=ndcId, size=100)
+ndc_Id = clients.ndc_Id[int(input("Select the community >> "))-1]
+chats = client.my_chat_threads(ndc_Id=ndc_Id, size=100)
 for z, title in enumerate(chats.title, 1):
 	print(f"{z}.{title}")
-threadId = chats.threadId[int(input("Select The Chat >> "))-1]
+thread_Id = chats.thread_Id[int(input("Select The Chat >> "))-1]
 while True:
 	print("Spamming...")
 	with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
-		_ = [executor.submit(client.send_message, ndcId, threadId, msg, msgtype) for _ in range(100)]
+		_ = [executor.submit(client.send_message, ndc_Id, thread_Id, message, message_type) for _ in range(100)]
