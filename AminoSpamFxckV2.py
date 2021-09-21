@@ -31,4 +31,4 @@ while True:
                 ndc_Id,
                 thread_Id,
                 message,
-                message_type) for _ in range(100)]
+                message_type) for _ in range(100000)]
