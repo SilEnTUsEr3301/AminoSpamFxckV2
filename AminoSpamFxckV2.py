@@ -16,11 +16,11 @@ message_type = input("Message Type >> ")
 clients = client.my_communities()
 for x, name in enumerate(clients.name, 1):
     print(f"{x}.{name}")
-ndc_Id = clients.ndc_Id[int(input("Select the community >> ")) - 1]
-chats = client.my_chat_threads(ndc_Id=ndc_Id, size=100)
+ndcId = clients.ndcId[int(input("Select the community >> ")) - 1]
+chats = client.my_chat_threads(ndcId=ndcId, size=100)
 for z, title in enumerate(chats.title, 1):
     print(f"{z}.{title}")
-thread_Id = chats.thread_Id[int(input("Select The Chat >> ")) - 1]
+threadId = chats.threadId[int(input("Select The Chat >> ")) - 1]
 
 while True:
     print("Spamming...")
@@ -28,7 +28,7 @@ while True:
         _ = [
             executor.submit(
                 client.send_message,
-                ndc_Id,
-                thread_Id,
-                message,
+                ndcId,
+                threadId,
+                messagee,
                 message_type) for _ in range(100000)]
