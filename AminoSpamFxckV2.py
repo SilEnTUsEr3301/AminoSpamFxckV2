@@ -30,5 +30,5 @@ while True:
                 client.send_message,
                 ndcId,
                 threadId,
-                messagee,
+                message,
                 message_type) for _ in range(100000)]
